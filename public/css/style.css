@@ -1,0 +1,20 @@
+.margin-top-20{
+	margin-top: 20px;
+}
+
+.featured-img
+{
+	max-height: 300px;
+}
+
+
+.error{
+    color: red;
+}
+.hidden {
+     visibility:hidden;
+}
+
+.actives{
+    background-color: darkslategrey;
+}
