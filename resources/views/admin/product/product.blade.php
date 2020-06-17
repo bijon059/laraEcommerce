@@ -130,6 +130,16 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="exampleTextarea1">Category </label>
+                                <select class="form-control" name="category_id">
+                                    <option style="font-size: 14px" value="">Select Category</option>
+                                    @foreach ($category as $item)
+                                    <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="exampleTextarea1">Description</label>
                                 <textarea name="description" class="form-control" id="exampleTextarea1" type="text"
                                     rows="2"></textarea>

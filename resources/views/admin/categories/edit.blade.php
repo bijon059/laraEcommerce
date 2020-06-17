@@ -5,59 +5,42 @@
 
 <div class="card">
     <div class="card-header">
-        <h4> Edit Product </h4>
+        <h4> Edit Category </h4>
     </div>
     <div class="card-body">
 
-        <form class="forms-sample" id="form" action=" {{ route('admin.product.update',$product->id) }} " method="post"
+        <form class="forms-sample" id="form" action=" {{ route('admin.category.update',$category->id) }} " method="post"
             enctype="multipart/form-data">
             {{ csrf_field() }}
-            <div class="form-group" id="ccs">
-                <label for="exampleInputName">Title</label>
-                <input type="text" class="form-control" name="title" id="title" value="{{$product->title}}">
+            <div class="form-group">
+                <label for="exampleInputName">Category Name</label>
+                <input type="text" class="form-control" name="name" id="title" value="{{$category->name}}">
                 <p><span class="error"></span></p>
             </div>
 
             <div class="form-group">
-                <label for="exampleInputName1">Price</label>
-                <input type="number" class="form-control" name="price" id="exampleInputName1" value="{{$product->price}}">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputName1">Quantity</label>
-                <input type="number" class="form-control" name="quantity" id="quantity" value="{{$product->quantity}}">
+                <label for="exampleTextarea1">Parent Category </label>
+                @if($category->parent_id == Null )
+                <select class="form-control" name="parent_id">
+                    <option style="font-size: 14px" value="">Select Parent Category</option>
+                    @foreach ($parent_category as $item)
+                    <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                </select>
+                 @else
+                 <select class="form-control" name="parent_id">
+                    <option style="font-size: 14px" value="{{$category->parent_id}}">{{$category->parent->name}}</option>
+                    @foreach ($parent_category as $item)
+                    <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                </select>
+                @endif
+
             </div>
 
             <div class="form-group">
                 <label for="exampleTextarea1">Description</label>
-                <textarea name="description" class="form-control" id="exampleTextarea1" type="text" rows="2">{{$product->description}}</textarea>
-            </div>
-
-            <div class="form-group ">
-                <label for="product_image">Product Image</label>
-                <input name="product_image[]"  type="hidden">
-                @php
-                $i=1;
-                @endphp
-                @foreach ($product->images as $image)
-                @if ($i>0)
-                <img class="card-img-top featured-img" style="display: block; height: 150px; width: 150px;"
-                    src="{{ asset('images/Product/'.$image->image) }}" alt="Card image">
-                @endif
-                @php
-                $i--;
-                @endphp
-                @endforeach
-                <div id="dinamic">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p>Wand To Add More Image</p>
-                        </div>
-                        <div class="col-md-3">
-                            <a id="add" href="#" class="fa fa-plus-square fa-1x" style="margin-top:10px;"> Add Image
-                                Field </a>
-                        </div>
-                    </div>
-                </div>
+                <textarea name="description" class="form-control" id="exampleTextarea1" type="text" rows="2">{{$category->description}}</textarea>
             </div>
 
             <button type="submit" class="btn btn-success mr-2">Update Product</button>
@@ -69,12 +52,6 @@
 @endsection
 
 
-
-@section('js')
-
-<script src=" {{ asset('js/addProduct.js') }}" type="text/javascript" charset="utf-8" async defer></script>
-
-@endsection()
 
 {{--
                       <div class="form-group">

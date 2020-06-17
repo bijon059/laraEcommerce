@@ -7,21 +7,23 @@ use Illuminate\Support\Str;
 
 use App\Product;
 use App\ProductImage;
+use App\Category;
 
 class ProductController extends Controller
 {
     //
     public function list()
     {
-    	$data['products'] = Product::orderBy('id','desc')->get();
-    	return view('admin.product.product',$data);
+        $data['products'] = Product::orderBy('id','desc')->get();
+        $category=Category::orderBy('name','asc')->get();
+    	return view('admin.product.product',$data,compact('category'));
     }
 
     # Product CreatePage
     public function create()
     {
-
-    	return view('admin.product.create');
+        $category=Category::orderBy('name','asc')->get();
+    	return view('admin.product.create',compact('category'));
     }
 
     # Save Product
@@ -37,7 +39,7 @@ class ProductController extends Controller
 
         $product->quantity = $request->quantity;
 
-        $product->category_id = 1;
+        $product->category_id = $request->category_id;
         $product->brand_id = 1;
         $product->admin_id = 1;
         $product->status = 1;
