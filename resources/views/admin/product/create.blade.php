@@ -39,7 +39,7 @@
 
             <div class="form-group">
                 <label for="exampleTextarea1">Brand </label>
-                <select class="form-control" name="category_id">
+                <select class="form-control" name="brand_id">
                     <option style="font-size: 14px" value="">Select Brand</option>
                     @foreach ($brand as $item)
                     <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
