@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-success mr-2">Add Product</button>
+            <button type="submit" class="btn btn-success mr-2">Add Product here</button>
 
         </form>
     </div>
