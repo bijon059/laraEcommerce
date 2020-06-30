@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Product;
 use App\ProductImage;
 use App\Category;
+use App\Brand;
 
 class ProductController extends Controller
 {
@@ -16,14 +17,16 @@ class ProductController extends Controller
     {
         $data['products'] = Product::orderBy('id','desc')->get();
         $category=Category::orderBy('name','asc')->get();
-    	return view('admin.product.product',$data,compact('category'));
+        $brand=Brand::orderBy('name','asc')->get();
+    	return view('admin.product.product',$data,compact('category','brand'));
     }
 
     # Product CreatePage
     public function create()
     {
         $category=Category::orderBy('name','asc')->get();
-    	return view('admin.product.create',compact('category'));
+        $brand=Brand::orderBy('name','asc')->get();
+    	return view('admin.product.create',compact('category','brand'));
     }
 
     # Save Product
@@ -40,7 +43,7 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
 
         $product->category_id = $request->category_id;
-        $product->brand_id = 1;
+        $product->brand_id = $request->brand_id;
         $product->admin_id = 1;
         $product->status = 1;
         $product->slug = Str::slug($product->title);
@@ -68,7 +71,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $data['product'] = Product::find($id);
-    	return view('admin.product.edit',$data);
+        $category=Category::orderBy('name','asc')->get();
+        $brand=Brand::orderBy('name','asc')->get();
+    	return view('admin.product.edit',$data,compact('category','brand'));
     }
 
     # Edit Product
@@ -77,6 +82,10 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         $product->title = $request->title;
+
+        $product->category_id = $request->category_id;
+
+        $product->brand_id = $request->brand_id;
 
         $product->description = $request->description;
 

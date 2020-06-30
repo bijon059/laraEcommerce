@@ -24,6 +24,8 @@
                         <th> Title </th>
                         <th> Price </th>
                         <th> Quantity </th>
+                        <th> Category </th>
+                        <th> Brand </th>
                         <th> Image</th>
                         <th> Action </th>
                     </tr>
@@ -37,6 +39,20 @@
                             {{ $product->price }}
                         </td>
                         <td> {{ $product->quantity }} </td>
+                        <td>
+                            @if($product->category_id == '1' )
+                                Primary Category
+                            @else
+                            {{ $product->category->name }}</p>
+                            @endif
+                        </td>
+                        <td>
+                            @if($product->brand_id == Null )
+                                Not Selected
+                            @else
+                            {{ $product->brand->name }}</p>
+                            @endif
+                        </td>
                         <td> @php
                             $i=1;
                             @endphp
@@ -134,6 +150,16 @@
                                 <select class="form-control" name="category_id">
                                     <option style="font-size: 14px" value="">Select Category</option>
                                     @foreach ($category as $item)
+                                    <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleTextarea1">Brand </label>
+                                <select class="form-control" name="category_id">
+                                    <option style="font-size: 14px" value="">Select Brand</option>
+                                    @foreach ($brand as $item)
                                     <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
                                     @endforeach
                                 </select>

@@ -28,6 +28,46 @@
             </div>
 
             <div class="form-group">
+                <label for="exampleTextarea1">Category</label>
+                @if($product->category_id == '1' )
+                <select class="form-control" name="category_id">
+                    <option style="font-size: 14px" value="">Select Category</option>
+                    @foreach ($category as $item)
+                    <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                </select>
+                 @else
+                 <select class="form-control" name="category_id">
+                    <option style="font-size: 14px" value="{{$product->category_id}}">{{$product->category->name}}</option>
+                    @foreach ($category as $item)
+                    <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                </select>
+                @endif
+
+            </div>
+
+            <div class="form-group">
+                <label for="exampleTextarea1">Brand</label>
+                @if($product->brand_id == NULL )
+                <select class="form-control" name="brand_id">
+                    <option style="font-size: 14px" value="">Select Brand</option>
+                    @foreach ($brand as $item)
+                    <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                </select>
+                 @else
+                 <select class="form-control" name="brand_id">
+                    <option style="font-size: 14px" value="{{$product->brand_id}}">{{$product->brand->name}}</option>
+                    @foreach ($brand as $item)
+                    <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                </select>
+                @endif
+
+            </div>
+
+            <div class="form-group">
                 <label for="exampleTextarea1">Description</label>
                 <textarea name="description" class="form-control" id="exampleTextarea1" type="text" rows="2">{{$product->description}}</textarea>
             </div>

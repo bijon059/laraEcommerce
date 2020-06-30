@@ -5,43 +5,24 @@
 
 <div class="card">
     <div class="card-header">
-        Add Product
+        Add Category
     </div>
     <div class="card-body">
 
-        <form class="forms-sample" id="form" action=" {{ route('admin.product.store') }} " method="post"
+        <form class="forms-sample" id="form" action=" {{ route('admin.category.store') }} " method="post"
             enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group" id="ccs">
-                <label for="exampleInputName">Title</label>
-                <input type="text" class="form-control" name="title" id="title" placeholder="Title">
+                <label for="exampleInputName">Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Title">
                 <p><span class="error"></span></p>
             </div>
 
             <div class="form-group">
-                <label for="exampleInputName1">Price</label>
-                <input type="number" class="form-control" name="price" id="exampleInputName1" placeholder="Price">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputName1">Quantity</label>
-                <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Quantity">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleTextarea1">Category </label>
-                <select class="form-control" name="category_id">
-                    <option style="font-size: 14px" value="">Select Category</option>
-                    @foreach ($category as $item)
-                    <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleTextarea1">Brand </label>
-                <select class="form-control" name="category_id">
-                    <option style="font-size: 14px" value="">Select Brand</option>
-                    @foreach ($brand as $item)
+                <label for="exampleTextarea1">Parent Category </label>
+                <select class="form-control" name="parent_id">
+                    <option style="font-size: 14px" value="">Select Parent Category</option>
+                    @foreach ($parent_category as $item)
                     <option style="font-size: 14px" value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach
                 </select>
@@ -53,21 +34,15 @@
             </div>
 
             <div class="form-group ">
-                <label for="product_image">Product Image</label>
-                <div id="dinamic">
+                <label for="image">Category Image</label>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="file" class="form-control" name="product_image[]">
-                        </div>
-                        <div class="col-md-3">
-                            <a id="add" href="#" class="fa fa-plus-square fa-1x" style="margin-top:10px;"> Add Image
-                                Field </a>
+                            <input type="file" class="form-control" name="image">
                         </div>
                     </div>
-                </div>
             </div>
 
-            <button type="submit" class="btn btn-success mr-2">Add Product</button>
+            <button type="submit" class="btn btn-success mr-2">Add Category</button>
 
         </form>
     </div>

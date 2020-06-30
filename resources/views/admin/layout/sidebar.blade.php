@@ -62,7 +62,7 @@
             <a class="nav-link" href="{{ route('admin.category.index') }}"> Manage Categories </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.category.create') }}"> Add Categories </a>
+            <a class="nav-link" href="{{ route('admin.brand.index') }}"> Manage Brands </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pages/samples/register.html"> Register </a>
