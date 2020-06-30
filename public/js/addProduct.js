@@ -7,9 +7,11 @@ $(function() {
       // The key name on the left side is the name attribute
       // of an input field. Validation rules are defined
       // on the right side
-      title: {required:true, rangelength: [3, 100]},
+      title: {required:true, rangelength: [3, 500]},
       price: {required:true, number: true, rangelength: [2, 7]},
       quantity: {required:true, number: true, rangelength: [1, 5]},
+      category_id:{required:true},
+      brand_id:{required:true},
       "product_image[]": {
             "required": true,
             "extension": "jpg|jpeg|png|ico|bmp",
@@ -18,8 +20,7 @@ $(function() {
     // Specify validation error messages
     messages: {
       title: {
-            required: "Please Enter Title.",
-            rangelength: "Title Should Be More Than 3 words."
+            required: "Please Enter Title."
         },
       price: {
             required: "Please Enter price.",
@@ -28,6 +29,14 @@ $(function() {
       quantity: {
             required: "Please Enter Number Of Quantity.",
             number: "Quantity Should Be Numeric."
+        },
+
+        category_id: {
+            required: "Please Select a Category."
+        },
+
+        brand_id: {
+            required: "Please Select a Brand."
         },
       "product_image[]": {
             "required": "Please upload file.",
