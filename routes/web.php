@@ -24,6 +24,12 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['prefix' => '/product'], function () {
         Route::get('/list', 'ProductController@list')->name('admin.product.list');
+
+        // testing product as categories
+        Route::get('/list/{id}', 'ProductController@catPro')->name('admin.products');
+        // testing product as categories ends here
+
+
         Route::get('/create', 'ProductController@create')->name('admin.product.create');
 
 

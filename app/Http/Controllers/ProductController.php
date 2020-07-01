@@ -16,9 +16,20 @@ class ProductController extends Controller
     public function list()
     {
         $data['products'] = Product::orderBy('id','desc')->get();
-        $category=Category::orderBy('name','asc')->get();
-        $brand=Brand::orderBy('name','asc')->get();
-    	return view('admin.product.product',$data,compact('category','brand'));
+        $data['categories'] = Category::all();
+        $data['brand'] = Brand::all();
+        // dd($data['category']);
+    	return view('backend.product.product',$data);
+    }
+
+    // Category wise products
+    public function catPro($id)
+    {
+        //dd($id);
+        $data['products'] = Product::where('category_id',$id)->orderBy('id','desc')->get();
+        $data['categories'] = Category::all();
+        $data['brand'] = Brand::all();
+    	return view('backend.product.categoriedProduct',$data);
     }
 
     # Product CreatePage
