@@ -39,7 +39,7 @@
                                 @if($product->brand_id == Null )
                                     Not Selected
                                 @else
-                                {{ $product->brand->name }}</p>
+                               </p>
                                 @endif
                             </td>
                             <td> @php

@@ -23,10 +23,10 @@ class ProductController extends Controller
     }
 
     // Category wise products
-    public function catPro($id)
+    public function catPro(Request $request)
     {
-        //dd($id);
-        $data['products'] = Product::where('category_id',$id)->orderBy('id','desc')->get();
+        // dd(request()->route('id'));
+        $data['products'] = Product::where('category_id',request()->route('id'))->orderBy('id','desc')->get();
         $data['categories'] = Category::all();
         $data['brand'] = Brand::all();
     	return view('backend.product.categoriedProduct',$data);
