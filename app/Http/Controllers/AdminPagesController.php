@@ -13,6 +13,6 @@ class AdminPagesController extends Controller
     public function index()
     {
     	# code...
-    	return view('admin.pages.index');
+    	return view('backend.pages.index');
     }
 }
